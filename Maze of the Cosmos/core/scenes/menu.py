@@ -27,10 +27,10 @@ class MenuScene:
         pass
 
     def draw(self, screen):
-        screen.fill(constants.BLACK)
+        screen.fill(constants.MAIN_BACKGROUND_COLOR)
 
         # Menu Logo
-        title = self.font.render("MAZE OF THE COSMOS", True, constants.WHITE)
+        title = self.font.render("MAZE OF THE COSMOS", True, constants.PRIMARY_TEXT_COLOR)
         screen.blit(title, (constants.GAME_WIDTH // 2 - title.get_width() // 2, 150))
 
         # Menu Picture
