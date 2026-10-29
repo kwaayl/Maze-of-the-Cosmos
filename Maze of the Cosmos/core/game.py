@@ -1,8 +1,10 @@
 # Engine Basically
 import pygame
 from core.helpers import constants
+from core.helpers import assets
 from core.scenes import menu
 from core.scenes import playing
+
 
 class Game:
     #Initialization
@@ -20,6 +22,11 @@ class Game:
 
         #Enter First Scene (Menu) First
         self.switch("menu")
+
+        #Asset Loading
+        assets.AssetCache.load_image("test", "assets/images/test.png")
+        assets.AssetCache.load_image("catPlayer", "assets/images/cat.png")
+        assets.AssetCache.load_image("bossJas", "assets/images/boss.png")
         
     #SceneCreation Logic
     def register(self, name, scene):
@@ -30,10 +37,10 @@ class Game:
         self.current_scene = self.scenes[name]
         self.current_scene.on_enter()
 
-    #Taking Delta Time for Event Handling
+    #Taking Delta Time for Event Handling / Gameloop
     def run(self):
         while True:
-            dt = self.clock.tick(60) / 1000.0
+            dt = self.clock.tick(constants.FPS) / 1000.0
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
